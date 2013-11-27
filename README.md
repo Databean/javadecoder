@@ -1,0 +1,1 @@
+Decoder written in C++ for Java class files. Comes with a json library (json-cpp), and requires libzip and glibmm.
