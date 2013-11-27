@@ -17,5 +17,5 @@ $(OBJECTS) : $$(patsubst obj/%.o,src/%.cpp,$$@) $(wildcard src/*.h)
 
 .PHONY : clean
 clean:
-	-rm -rf $(OBJECTS)
+	-rm -rf obj/*.o
 	-rm -f $(EXECUTABLE)
