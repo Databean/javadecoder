@@ -29,7 +29,7 @@ private:
 public:
 	ConstantPool(ClassFile& cf, uint16_t numElements);
 	ConstantPool(ClassFile& cf, std::istream& in);
-	~ConstantPool();
+	virtual ~ConstantPool();
 	
 	virtual Constant& operator[](uint16_t index);
 	virtual const Constant& operator[](uint16_t index) const;

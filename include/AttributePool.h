@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
 #include <glibmm/ustring.h>
 
@@ -38,6 +39,21 @@ public:
 	
 	bool containsAttribute(const Glib::ustring& name) const;
 	const Attribute& getAttribute(const Glib::ustring& name) const;
+	
+	template<typename AttributeType>
+	AttributeType& getAttribute() {
+		for(std::vector<Attribute*>::iterator it = attributes.begin(); it != attributes.end(); it++) {
+			if(dynamic_cast<AttributeType*>(*it)) {
+				return *it;
+			}
+		}
+		throw std::runtime_error("No such attribute type");
+	}
+	
+	template<typename AttributeType>
+	const AttributeType& getAttribute() const {
+		return const_cast<AttributePool*>(this)->getAttribute<AttributeType>();
+	}
 };
 
 /**
